@@ -8,7 +8,7 @@ int* createTable(int tablesize)
 
     for(int i=0;i<tablesize;i++)
     {
-        tab
+        tab[i]=i*3;
     }
 
     return tab;
@@ -25,8 +25,10 @@ bool binarySearch(int *tab, int numberToSearch, int tabSize)
 		center = (l + r)/2;
 
 		if(tab[center] == numberToSearch)
+        {
             delete tab;
 			return true;
+        }
 
 		if(tab[center] > numberToSearch)
 			r = center - 1;
@@ -44,10 +46,12 @@ int main()
     int number=NULL;
     cout<<"Size of table: ";
     cin>>n;
-    cout<<endl<<"Number to search: ";
-    cin>>number;
-
-    cout<<endl<<binarySearch(createTable(n),10,n);
+    while(true)
+    {
+        cout<<endl<<"Number to search: ";
+        cin>>number;
+        cout<<endl<<binarySearch(createTable(n),number,n);
+    }
 
     return 0;
 }
